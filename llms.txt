@@ -1,0 +1,54 @@
+# WildFly Galleon Feature Packs
+
+> This repository is the central registry of Galleon feature packs that can be provisioned with each WildFly server version. It contains per-version provisioning XML files that list compatible feature packs for bare-metal and cloud execution contexts, along with tech-preview variants. WildFly Glow consumes this registry (from the `release` branch) to automatically discover which feature packs to use when provisioning a WildFly server.
+
+## Overview
+
+- [README.md](README.md): Project overview, relationship with WildFly Glow, instructions for adding extra feature packs
+- [versions.yaml](versions.yaml): Metadata listing all WildFly versions in this registry and identifying the latest version
+- [extra-feature-packs.md](extra-feature-packs.md): Table of third-party and extra feature packs with links to their source repositories
+
+## Provisioning Files (Per-Version)
+
+Each versioned directory (e.g., `41.0.0.Final/`) contains:
+
+- [41.0.0.Final/provisioning-bare-metal.xml](41.0.0.Final/provisioning-bare-metal.xml): Feature packs for bare-metal execution (latest Final release)
+- [41.0.0.Final/provisioning-cloud.xml](41.0.0.Final/provisioning-cloud.xml): Feature packs for cloud execution (latest Final release)
+- [41.0.0.Final/tech-preview/provisioning-bare-metal.xml](41.0.0.Final/tech-preview/provisioning-bare-metal.xml): Tech-preview feature packs for bare-metal
+- [41.0.0.Final/tech-preview/provisioning-cloud.xml](41.0.0.Final/tech-preview/provisioning-cloud.xml): Tech-preview feature packs for cloud
+
+## Catalog
+
+The `catalog/` directory contains JSON metadata per version for tooling consumption:
+
+- [catalog/41.0.0.Final/feature-packs.json](catalog/41.0.0.Final/feature-packs.json): JSON list of all feature packs for this version
+- [catalog/41.0.0.Final/variants.json](catalog/41.0.0.Final/variants.json): Available server variants (Preview, EE 10)
+
+## Spaces
+
+- [spaces/spaces.yaml](spaces/spaces.yaml): Defines feature-pack spaces (e.g., incubating)
+- [spaces/incubating/versions.yaml](spaces/incubating/versions.yaml): Version metadata for incubating feature packs
+
+## Release & Build Tooling
+
+- [release_process.md](release_process.md): Step-by-step instructions for adding a new WildFly release (Beta, Final, Micro)
+- [add-wildfly-release.sh](add-wildfly-release.sh): Script to automate adding a new WildFly release version
+- [release-publish-maven-metadata.sh](release-publish-maven-metadata.sh): Script to publish Maven metadata to Central after a release
+- [maven/pom.xml](maven/pom.xml): Parent POM for build tooling (groupId: org.wildfly.galleon.feature-packs)
+- [maven/add-wildfly-release/](maven/add-wildfly-release/): Maven module that generates provisioning files for new releases
+- [maven/docs/](maven/docs/): Maven module that generates the documentation index
+- [maven/maven-metadata/](maven/maven-metadata/): Maven module for publishing metadata artifacts to Maven Central
+
+## CI & Testing
+
+- [.github/workflows/ci.yml](.github/workflows/ci.yml): CI workflow that runs WildFly Glow tests on pull requests to the release branch
+- [.github/workflows/snapshot-ci.yml](.github/workflows/snapshot-ci.yml): CI workflow for SNAPSHOT version testing
+- [tests/run-wildfly-glow-tests.sh](tests/run-wildfly-glow-tests.sh): Test script validating Glow layer discovery against sample WAR files
+- [tests/war/](tests/war/): Sample WAR files used for WildFly Glow discovery tests
+
+## Documentation
+
+- [docs/index.html](docs/index.html): Generated HTML documentation listing all feature packs per version
+- [CONTRIBUTING.md](CONTRIBUTING.md): Contribution guidelines
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): Code of conduct
+- [SECURITY.md](SECURITY.md): Security policy
