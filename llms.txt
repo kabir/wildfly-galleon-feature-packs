@@ -2,6 +2,8 @@
 
 > This repository is the central registry of Galleon feature packs that can be provisioned with each WildFly server version. It contains per-version provisioning XML files that list compatible feature packs for bare-metal and cloud execution contexts, along with tech-preview variants. WildFly Glow consumes this registry (from the `release` branch) to automatically discover which feature packs to use when provisioning a WildFly server.
 
+> Indexed source: https://raw.githubusercontent.com/kabir/wildfly-galleon-feature-packs/ai-index/llms.txt — preserve this fork and ref when following source pointers.
+
 ## Overview
 
 - [README.md](README.md): Project overview, relationship with WildFly Glow, instructions for adding extra feature packs
